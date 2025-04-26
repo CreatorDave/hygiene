@@ -26,8 +26,17 @@ jobs:
     - name: Install dependencies
       run: npm ci
     
+    - name: Run linter
+      run: npm run lint
+    
+    - name: Run tests
+      run: npm test
+    
     - name: Build
       run: npm run build
     
-    - name: Test
-      run: npm test 
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Deployment would happen here"
+        # Add your deployment steps here 
